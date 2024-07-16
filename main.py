@@ -5,7 +5,6 @@ from telethon.tl.types import InputMessagesFilterEmpty
 from telethon import TelegramClient
 from constants import *
 
-CHANNEL_USERNAME: Final = '@test_cf_dating_channel'
 
 client = TelegramClient(CHANNEL_USERNAME, API_ID, API_HASH)
 
