@@ -6,8 +6,6 @@ from telethon import TelegramClient
 from constants import *
 
 CHANNEL_USERNAME: Final = '@test_cf_dating_channel'
-API_ID: Final = '7063969059' # ??
-API_HASH: Final = 'AAHhFvNiKAGLztJFvI4WaqhIbHO6NvaQKvg' # ??
 
 client = TelegramClient(CHANNEL_USERNAME, API_ID, API_HASH)
 
@@ -27,7 +25,7 @@ async def shuffle_users_command(update: Update, context: ContextTypes.DEFAULT_TY
 
 	print('Shuffling entries...')
 
-	groupChat: chat = update.message.chat
+	groupChat: chat = update.message.chat # POINT OF ERROR
 	messages_5 = await client.get_messages(chat, ids=2)
 	for message in client.iter_messages(chat):
 		print(message.id, message.text)
