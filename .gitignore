@@ -2,4 +2,4 @@ shuffle_notes.txt
 constants.py
 @*
 __pycache__/*
-
+.DS_Store

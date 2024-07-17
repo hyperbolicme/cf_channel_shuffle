@@ -22,12 +22,16 @@ async def shuffle_users_command(update: Update, context: ContextTypes.DEFAULT_TY
 	# new_seq = [];	
 	new_seq ='DUMMY SEQ STR'
 
-	print('Shuffling entries...')
+	print('Shuffling entries...\n')
+	print(update)
+	print('\n')
 
-	groupChat: chat = update.message.chat # POINT OF ERROR
-	messages_5 = await client.get_messages(chat, ids=2)
-	for message in client.iter_messages(chat):
-		print(message.id, message.text)
+	chat: Chat = update.channel_post.chat 
+	print(chat)
+	print('\n')
+	# messages_5 = await client.get_messages(chat, ids=2, filter=InputMessagesFilterEmpty)
+	# for message in client.iter_messages(chat):
+	# 	print(message.id, message.text)
 
 	await update.message.reply_text('Shuffling is done.\n\n')
 
@@ -45,10 +49,10 @@ def handle_response(text: str) -> str:
 
 
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
-	message_type = update.message.chat.type
-	text: str = update.message.text
+	message_type = update.channel_post.chat.type
+	text: str = update.channel_post.text
 
-	print(f'User({update.message.chat.id}) in {message_type}): "{text}"')
+	print(f'User({update.channel_post.chat.id}) in {message_type}): "{text}"')
 
 
 	if message_type == 'group':
